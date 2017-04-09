@@ -4,12 +4,12 @@ public class Main {
     // START1 OMIT
     public static void main(String[] args) {
         new Thread(() -> { connectAndGetData("Server 1"); }).start();
-        new Thread(() -> { connectAndGetData("Sever 2"); }).start();
+        new Thread(() -> { connectAndGetData("Server 2"); }).start();
         new Thread(() -> { connectAndGetData("Server x"); }).start();
         new Thread(() -> { connectAndGetData("Server y"); }).start();
         
         try {
-            Thread.sleep(5000);
+            Thread.sleep(5000); // OMIT
         } catch(InterruptedException ex) {
             //Handle Exception
         }
