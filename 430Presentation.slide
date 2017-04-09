@@ -7,7 +7,7 @@ Nathanael Hardy
 * Overview
 
 - Goroutines
-- Channels
+- Channels - 
 - Buffered Channels
 - WaitGroups
 - Worker Pools
