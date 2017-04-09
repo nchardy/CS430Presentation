@@ -1,0 +1,113 @@
+Golang Vs. Java
+CS 430
+10 Apr 2017
+
+Nathanael Hardy
+
+* Overview
+
+- Goroutines
+- Channels
+- Buffered Channels
+- WaitGroups
+- Worker Pools
+- Demo
+
+* Golang Vs. Java
+
+- Built with concurrency in mind
+- Concurrency is easy, safe and simple
+- Go is less feature rich and gives less control (for better or worse)
+- Compiled to machine code and executed directly making it faster 
+
+
+* The Goroutine
+
+- Lightweight 'thread'
+- Go handles multiplexing and blocking
+- Inexpensive to create and destroy
+- Only expense of spawning is allocation of stack space
+
+
+* 1. Goroutine Vs. Java System Thread
+
+*Mapping*
+
+- Go: Multiplexed
+- Java: One-to-One
+
+*Costs*
+
+- Go: Inexpensive
+- Java: Costly due to mapping
+
+
+* Server Example
+- Retrieve data from server
+- Each call does not rely on data from the previous callback
+- Speed is of essence 
+
+* Server code written in Java
+.code codeExamples/main.java /START1 OMIT/,/END1 OMIT/
+.code codeExamples/main.java /START2 OMIT/,/END2 OMIT/
+
+* Server code written in Go
+.play codeExamples/main.go /START1 OMIT/,/END1 OMIT/
+
+* Channels
+- A mailbox for communication
+- Statically typed
+- No need for locks and synchronization
+- Reading and writing is blocking
+- A synchronization point
+
+	c := make(chan string)
+
+* Channels And Java BlockingQueue (Synchronous Queue Implementation)
+- Similar when using put() and take()
+- Both have size of 0
+- Both implement methods atomically
+- Java does not implement a select statement
+
+
+* Buffered Channels
+- More closely resembles a ArrayBlockingQueue 
+- Created with a buffer size
+- Will block when putting onto channel if exceeds buffer size
+
+	JackieChan := make(chan int, 2)
+
+* WaitGroups
+- Similar to a countdown latch
+- Used to ensure all processes are finished before moving forward
+Add to the wait group
+
+	wg.Add(1)
+
+Remove from the wait group
+
+	wg.Done()
+
+Blocking operation
+
+	wg.Wait()
+
+* Worker Pools
+- Uses Goroutines and Channels
+- Similar to a Thread Pool
+- Entirely different use case
+
+* Kids at the super market - The Worker
+.code codeExamples/shoppingList.go /START1 OMIT/,/END1 OMIT/
+
+* Kids at the super market - Headquarters
+.play codeExamples/shoppingList.go /START2 OMIT/,/END2 OMIT/
+
+* Observations
+- Simpler to create a concurrent solution
+- Easy to build a solution that expands with grace
+- Less headaches and less worry
+- Less control and less options
+
+
+* Questions?
