@@ -12,6 +12,7 @@ func main() {
     go connectAndGetData("Server y") // HL
     time.Sleep(5 * time.Second) // OMIT
     //Wait for all data to be returned and do something
+    //...
     fmt.Println("Shutting down")
 }
 //END1 OMIT

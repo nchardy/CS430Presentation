@@ -7,8 +7,8 @@ public class Main {
         new Thread(() -> { connectAndGetData("Server 2"); }).start(); // HL
         new Thread(() -> { connectAndGetData("Server x"); }).start(); // HL
         new Thread(() -> { connectAndGetData("Server y"); }).start(); // HL
-        
         //Wait for all data to be returned and do something
+        //...
         try { // OMIT
             Thread.sleep(5000); // OMIT
         } catch(InterruptedException ex) { // OMIT

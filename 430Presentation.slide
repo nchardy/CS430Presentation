@@ -29,7 +29,7 @@ Nathanael Hardy
 - Inexpensive to create and destroy
 - Only expense of spawning is allocation of stack space
 
-*Java System Thread*
+*JavaSystemThread*
 - Mapped to OS Thread
 - Expensive to create and destroy
 - Must request OS level resources
@@ -37,7 +37,7 @@ Nathanael Hardy
 
 * Server Example
 - Retrieve data from server
-- Each call does not rely on data from the previous callback
+- Each call does not rely on data from the previous request
 - Speed is of essence 
 
 * Server code written in Java
@@ -50,12 +50,17 @@ Nathanael Hardy
 
 
 * Channels And Java BlockingQueue (Synchronous Queue Implementation)
+*Channels*
 - Like a pizza delivery
 - A synchronization point
+
+*Similarities*
 - Synchronous Queue must use put() and take()
 - Statically typed
 - Buffer size of 0
 - Methods are implemented atomically
+
+*Differences*
 - Java does not implement a select statement
 - Synchronous Queue can use FIFO fairness, channels cannot
 
@@ -84,8 +89,8 @@ Blocking operation
 
 * Worker Pools
 - Uses Goroutines and Channels
-- Similar to a Thread Pool
 - Create a set amount of Goroutines and reuse
+- Similar to a Thread Pool
 - Entirely different use case
 - Enhanced error handling
 - Clean and readable code
