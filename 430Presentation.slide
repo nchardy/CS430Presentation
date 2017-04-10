@@ -7,7 +7,7 @@ Nathanael Hardy
 * Overview
 
 - Goroutines
-- Channels - 
+- Channels
 - Buffered Channels
 - WaitGroups
 - Worker Pools
@@ -21,25 +21,18 @@ Nathanael Hardy
 - Compiled to machine code and executed directly making it faster 
 
 
-* The Goroutine
+* The Goroutine Vs. Java System Thread
 
+*Go*
 - Lightweight 'thread'
 - Go handles multiplexing and blocking
 - Inexpensive to create and destroy
 - Only expense of spawning is allocation of stack space
 
-
-* 1. Goroutine Vs. Java System Thread
-
-*Mapping*
-
-- Go: Multiplexed
-- Java: One-to-One
-
-*Costs*
-
-- Go: Inexpensive
-- Java: Costly due to mapping
+*Java*
+- Mapped to OS Thread
+- Expensive to create and destroy
+- Must request OS level resources
 
 
 * Server Example
@@ -52,22 +45,20 @@ Nathanael Hardy
 .code codeExamples/main.java /START2 OMIT/,/END2 OMIT/
 
 * Server code written in Go
-.play codeExamples/main.go /START1 OMIT/,/END1 OMIT/
+.code codeExamples/main.go /START1 OMIT/,/END1 OMIT/
+.code codeExamples/main.go /START2 OMIT/,/END2 OMIT/
 
-* Channels
-- A mailbox for communication
-- Statically typed
-- No need for locks and synchronization
-- Reading and writing is blocking
-- A synchronization point
-
-	c := make(chan string)
 
 * Channels And Java BlockingQueue (Synchronous Queue Implementation)
-- Similar when using put() and take()
-- Both have size of 0
-- Both implement methods atomically
+- Like a pizza delivery
+- A synchronization point
+- Synchronous Queue must use put() and take()
+- Statically typed
+- Buffer size of 0
+- Methods are implemented atomically
 - Java does not implement a select statement
+- Synchronous Queue can use FIFO fairness, channels cannot
+	c := make(chan string)
 
 
 * Buffered Channels
@@ -95,12 +86,19 @@ Blocking operation
 * Worker Pools
 - Uses Goroutines and Channels
 - Similar to a Thread Pool
+- Create a set amount of Goroutines and reuse
 - Entirely different use case
+- Enhanced error handling
+- Clean and readable code
+- Deterministic use of routines
+- Possibility of more specific scheduling handled by the worker
+
+* Kids at the super market - A worker pool solution
 
 * Kids at the super market - The Worker
 .code codeExamples/shoppingList.go /START1 OMIT/,/END1 OMIT/
 
-* Kids at the super market - Headquarters
+* Kids at the super market - Worker Pool
 .play codeExamples/shoppingList.go /START2 OMIT/,/END2 OMIT/
 
 * Observations

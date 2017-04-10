@@ -43,7 +43,7 @@ func main(){
 	wg.Wait() // HL
 	close(jobs) // HL
 	fmt.Println("All Done.  Let's do inventory now:")
-	time.Sleep(time.Second)
+	time.Sleep(time.Second) // OMIT
 	for a:=0; a<=len(items)-1; a++ {
 		item := <-completed
 		if item.finished{
