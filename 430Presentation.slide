@@ -23,13 +23,13 @@ Nathanael Hardy
 
 * The Goroutine Vs. Java System Thread
 
-*Go*
+*Goroutine*
 - Lightweight 'thread'
 - Go handles multiplexing and blocking
 - Inexpensive to create and destroy
 - Only expense of spawning is allocation of stack space
 
-*Java*
+*Java System Thread*
 - Mapped to OS Thread
 - Expensive to create and destroy
 - Must request OS level resources
@@ -58,7 +58,6 @@ Nathanael Hardy
 - Methods are implemented atomically
 - Java does not implement a select statement
 - Synchronous Queue can use FIFO fairness, channels cannot
-	c := make(chan string)
 
 
 * Buffered Channels
